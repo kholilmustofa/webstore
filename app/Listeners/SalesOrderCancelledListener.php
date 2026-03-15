@@ -2,13 +2,13 @@
 
 namespace App\Listeners;
 
-use App\Events\SalesOrderCreatedEvent;
-use App\Mail\SalesOrderCreatedMail;
+use App\Events\SalesOrderCancelledEvent;
+use App\Mail\SalesOrderCancelledMail;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Support\Facades\Mail;
 
-class SendOrderConfirmationEmailListener implements ShouldQueue
+class SalesOrderCancelledListener implements ShouldQueue
 {
     use InteractsWithQueue;
     /**
@@ -22,10 +22,10 @@ class SendOrderConfirmationEmailListener implements ShouldQueue
     /**
      * Handle the event.
      */
-    public function handle(SalesOrderCreatedEvent $event): void
+    public function handle(SalesOrderCancelledEvent $event): void
     {
         Mail::queue(
-            new SalesOrderCreatedMail($event->sales_order)
-        );  
+            new SalesOrderCancelledMail($event->sales_order)
+        );
     }
 }
