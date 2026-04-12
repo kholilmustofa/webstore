@@ -32,7 +32,7 @@ class Checkout extends Component
         'phone' => null,
         'address_line' => null,
         'destination_region_code' => null,
-        'shipping_hash' =>null,
+        'shipping_hash' => null,
         'payment_method_hash' => null
     ];
 
@@ -64,7 +64,7 @@ class Checkout extends Component
             return redirect()->route('cart');
         }
 
-        if($this->cart->total_quantity == 0) {
+        if ($this->cart->total_quantity == 0) {
             return redirect()->route('cart');
         }
 
@@ -149,8 +149,8 @@ class Checkout extends Component
     public function getShippingMethodsProperty(
         RegionQueryService $region_query,
         ShippingMethodService $shipping_service
-    ) : DataCollection|Collection {
-        if(! data_get($this->data, 'destination_region_code')) {
+    ): DataCollection|Collection {
+        if (! data_get($this->data, 'destination_region_code')) {
             return new DataCollection(ShippingData::class, []);
         }
 
@@ -165,8 +165,7 @@ class Checkout extends Component
 
     public function getShippingMethodProperty(
         ShippingMethodService $shipping_service
-    ) : ?ShippingData
-    {
+    ): ?ShippingData {
         if (
             empty(data_get($this->data, 'shipping_hash')) ||
             empty(data_get($this->data, 'destination_region_code'))
@@ -178,7 +177,7 @@ class Checkout extends Component
             data_get($this->data, 'shipping_hash')
         );
 
-        if( $data == null ) {
+        if ($data == null) {
             $this->addError('shipping_hash', "Shipping Cost Missing");
             redirect()->route('checkout');
         }
@@ -194,8 +193,7 @@ class Checkout extends Component
 
     public function getPaymentMethodsProperty(
         PaymentMethodQueryService $query_service
-    ) : DataCollection
-    {
+    ): DataCollection {
         return $query_service->getPaymentMethods();
     }
 
@@ -206,8 +204,7 @@ class Checkout extends Component
 
     public function placeAnOrder(
         CartServiceInterface $cart
-    )
-    {
+    ) {
         $validated = $this->validate();
         $shipping_method = app(ShippingMethodService::class)->getShippingMethod(
             data_get($validated, 'data.shipping_hash')

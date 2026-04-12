@@ -11,6 +11,7 @@ use App\Data\ShippingServiceData;
 use Illuminate\Support\Facades\Cache;
 use Spatie\LaravelData\DataCollection;
 use App\Contract\ShippingDriverInterface;
+use App\Drivers\Shipping\APIKurirShippingDriver;
 use App\Drivers\Shipping\OfflineShippingDriver;
 
 class ShippingMethodService
@@ -20,7 +21,8 @@ class ShippingMethodService
     public function __construct()
     {
         $this->drivers = [
-            new OfflineShippingDriver()
+            new OfflineShippingDriver(),
+            new APIKurirShippingDriver()
         ];
     }
 

@@ -9,6 +9,7 @@ use Spatie\LaravelData\DataCollection;
 use App\Contract\PaymentDriverInterface;
 use App\Data\SalesOrderData;
 use App\Data\SalesPaymentData;
+use App\Drivers\Payment\MootaPaymentDriver;
 use App\Drivers\Payment\OfflinePaymentDriver;
 use Dflydev\DotAccessData\Data;
 
@@ -20,6 +21,7 @@ class PaymentMethodQueryService
     {
         $this->drivers = [
             new OfflinePaymentDriver(),
+            new MootaPaymentDriver(),
         ];
     }
 

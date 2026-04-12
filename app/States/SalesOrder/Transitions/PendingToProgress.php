@@ -4,11 +4,12 @@ declare(strict_types=1);
 
 namespace App\States\SalesOrder\Transitions;
 
-use App\Data\SalesOrderData;
-use App\Events\SalesOrderProgressedEvent;
 use App\Models\SalesOrder;
-use App\States\SalesOrder\Progress;
+use App\Data\SalesOrderData;
+use Illuminate\Support\Carbon;
 use Spatie\ModelStates\Transition;
+use App\States\SalesOrder\Progress;
+use App\Events\SalesOrderProgressedEvent;
 
 class PendingToProgress extends Transition
 {
@@ -23,6 +24,7 @@ class PendingToProgress extends Transition
     {
         $this->sales_order->update([
             'status' => Progress::class,
+            'payment_paid_at' => Carbon::now()
         ]);
 
         event(new SalesOrderProgressedEvent(
