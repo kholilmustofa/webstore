@@ -85,6 +85,13 @@
                             <li
                                 class="inline-flex items-center px-4 py-3 -mt-px text-sm text-gray-800 border border-gray-200 gap-x-2 first:rounded-t-lg first:mt-0 last:rounded-b-lg dark:border-neutral-700 dark:text-neutral-200">
                                 <div class="flex items-center justify-between w-full">
+                                    <span>Status</span>
+                                    <span>{{ $order->status_label }}</span>
+                                </div>
+                            </li>
+                            <li
+                                class="inline-flex items-center px-4 py-3 -mt-px text-sm text-gray-800 border border-gray-200 gap-x-2 first:rounded-t-lg first:mt-0 last:rounded-b-lg dark:border-neutral-700 dark:text-neutral-200">
+                                <div class="flex items-center justify-between w-full">
                                     <span>Total Transfer</span>
                                     <span>{{ $order->total_formatted }}</span>
                                 </div>
@@ -93,17 +100,19 @@
                         </ul>
                     </div>
 
-                    @if ($is_redirect)
-                        <!-- Button -->
-                        <a href="{{ $redirect_url }}"
-                            class="block w-full px-3 py-2 font-medium text-center text-white bg-blue-600 border border-transparent rounded-lg text-md gap-x-2 hover:bg-blue-700 focus:outline-hidden focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
-                            Pay Now
-                        </a>
-                        <!-- End Buttons -->
-                    @else
-                        <span class="text-sm px-3 py-2 mt-4 block text-center text-gray-500 dark:text-neutral-500">
-                            Silahkan hubungi kami di nomor Whatsapp 08812490902
-                        </span>
+                    @if($order->status == 'App\States\SalesOrder\Pending')
+                        @if ($is_redirect)
+                            <!-- Button -->
+                            <a href="{{ $redirect_url }}"
+                                class="block w-full px-3 py-2 font-medium text-center text-white bg-blue-600 border border-transparent rounded-lg text-md gap-x-2 hover:bg-blue-700 focus:outline-hidden focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
+                                Pay Now
+                            </a>
+                            <!-- End Buttons -->
+                        @else
+                            <span class="text-sm px-3 py-2 mt-4 block text-center text-gray-500 dark:text-neutral-500">
+                                Silahkan hubungi kami di nomor Whatsapp 08812490902
+                            </span>
+                        @endif
                     @endif
 
                     <div class="my-5 hs-accordion-group">

@@ -21,7 +21,7 @@ class PaymentMethodQueryService
     {
         $this->drivers = [
             new OfflinePaymentDriver(),
-            new MootaPaymentDriver(),
+            new MootaPaymentDriver()
         ];
     }
 

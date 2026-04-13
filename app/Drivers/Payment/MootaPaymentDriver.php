@@ -12,6 +12,7 @@ use App\Models\SalesOrder;
 use App\Services\SalesOrderService;
 use Dflydev\DotAccessData\Data;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 use Spatie\LaravelData\DataCollection;
 
 class MootaPaymentDriver implements PaymentDriverInterface
@@ -27,52 +28,40 @@ class MootaPaymentDriver implements PaymentDriverInterface
     public function getMethods(): DataCollection
     {
         return PaymentData::collect([
-            PaymentData::from([
-                'driver' => $this->driver,
-                'method' => 'bca-bank-transfer',
-                'label' => '(Moota) Bank Transfer BCA',
-                'payload' => [
-                    'account_id' => '90RkQKmOjGB',
-                    'account_holder_name' => 'Kholil Mustofa'
-                ]
-            ])
+            PaymentData::from(config('services.moota.accounts'))
         ], DataCollection::class);
     }
 
     public function process(SalesOrderData $sales_order)
     {
         $response = Http::withToken(config('services.moota.access_token'))
-            ->post('https://app.moota.co/api/v2/create_transactions', [
+            ->post('https://app.moota.co/api/v2/create-transaction', [
                 'order_id' => $sales_order->trx_id,
-                'account_id' => data_get($sales_order->payment->payload, 'account_id'),
+                'bank_account_id' => data_get($sales_order->payment->payload, 'account_id'),
                 'customers' => [
+                    'name' => $sales_order->customer->full_name,
+                    'email' => $sales_order->customer->email,
+                    'phone' => $sales_order->customer->phone
+                ],
+                'items' => $sales_order->items->toCollection()->map(function (SalesOrderItemData $item) {
+                    return [
+                        'name' => $item->name,
+                        'description' => $item->short_desc,
+                        'qty' => $item->quantity,
+                        'price' => $item->price,
+                    ];
+                })->merge([
                     [
-                        'name' => $sales_order->customer->full_name,
-                        'email' => $sales_order->customer->email,
-                        'phone' => $sales_order->customer->phone
-                    ],
-                    [
-                        'items' => $sales_order->items->toCollection()->map(function (SalesOrderItemData $item) {
-                            return [
-                                'name' => $item->name,
-                                'description' => $item->short_desc,
-                                'qty' => $item->quantity,
-                                'price' => $item->price,
-                            ];
-                        })->merge([
-                            [
-                                'name' => $sales_order->shipping->courier,
-                                'description' => $sales_order->shipping->estimated_delivery,
-                                'qty' => 1,
-                                'price' => $sales_order->shipping_cost
-                            ]
-                        ])->toArray(),
-                        'description' => '',
-                        'note' => '',
-                        'redirect_url' => route('order-confirmed', $sales_order->trx_id),
-                        'total' => $sales_order->total
+                        'name' => $sales_order->shipping->courier,
+                        'description' => $sales_order->shipping->estimated_delivery,
+                        'qty' => 1,
+                        'price' => $sales_order->shipping_cost
                     ]
-                ]
+                ])->toArray(),
+                'description' => '',
+                'note' => '',
+                'redirect_url' => route('order-confirmed', $sales_order->trx_id),
+                'total' => $sales_order->total
             ]);
 
         return app(SalesOrderService::class)->updateShippingPayload($sales_order, [
