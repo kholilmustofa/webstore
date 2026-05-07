@@ -1,261 +1,128 @@
-# 🚀 Laravel Webstore - E-Commerce Platform
+# 📚 Webstore - Platform Toko Buku & Literatur Digital Modern
 
-A modern e-commerce web application built with Laravel 11, featuring a complete sales order management system with email notifications, queue processing, and Preline UI components.
+[![Laravel Version](https://img.shields.io/badge/Laravel-12.x-FF2D20?style=flat-ring&logo=laravel)](https://laravel.com)
+[![Livewire Version](https://img.shields.io/badge/Livewire-3.x-4E56A6?style=flat-ring&logo=livewire)](https://livewire.laravel.com)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4.0-38BDF8?style=flat-ring&logo=tailwind-css)](https://tailwindcss.com)
+[![Filament PHP](https://img.shields.io/badge/Filament-v3.x-F59E0B?style=flat-ring&logo=laravel)](https://filamentphp.com)
 
-## ✨ Features
+Selamat datang di **Webstore**, sebuah platform e-commerce toko buku modern yang dirancang khusus untuk mempertemukan para pencinta literatur dengan buku-buku terbaik pilihan mereka. Dari novel fiksi, buku pengembangan diri, hingga karya sastra digital terbaru, Webstore hadir sebagai ruang baca dan belanja digital yang indah, reaktif, dan premium.
 
-### 🛒 Shopping Features
-- Product catalog with search and filtering
-- Shopping cart management with real-time updates
-- Checkout process with customer information
-- Multiple payment methods integration
-- Shipping cost calculation with multiple couriers (JNE, J&T, SiCepat, Ninja Express, ID Express)
+---
 
-### 📦 Order Management
-- Sales order creation and tracking
-- Order state management (Pending, Progress, Completed, Cancelled)
-- Automated order status transitions
-- Sales order items tracking
-- Order history and details
+## 🖥️ Tampilan Webstore (Product Mockup)
 
-### 📧 Email Notification System
-- **Order Confirmation** - Sent when order is created
-- **Order Progress** - Sent when order is being processed
-- **Shipping Notification** - Sent with tracking number when order is shipped
-- **Order Completion** - Sent when order is delivered
-- **Order Cancellation** - Sent when order is cancelled
+Berikut adalah visualisasi antarmuka dari platform **Webstore**:
 
-### 🔄 Queue & Background Jobs
-- Database-driven queue system
-- Asynchronous email sending
-- Event-driven architecture
-- Background job processing for better performance
+![Webstore Laptop Mockup](public/images/webstore_mockup.png)
 
-### 🎨 Frontend
-- Livewire components for reactive UI
-- Preline UI components (Tailwind CSS based)
-- Responsive design
-- Real-time cart updates
-- Toast notifications
-- Alpine.js for interactivity
+*Antarmuka modern dengan banner interaktif **Big Book Sale**, navigasi yang responsif, katalog produk yang rapi, serta transisi animasi yang halus.*
 
-### 🔐 Admin Panel
-- Filament admin panel
-- Product management
-- Order management
-- Inventory tracking
-- Customer management
+---
 
-## 🛠️ Tech Stack
+## 🎯 Webstore Ini Untuk Apa?
 
-- **Framework**: Laravel 11
-- **Frontend**: Livewire, Alpine.js, Tailwind CSS, Preline UI
-- **Database**: MySQL
-- **Queue**: Database driver
-- **Admin Panel**: Filament
-- **State Management**: Laravel Model States
-- **Data Transfer Objects**: Laravel Data
-- **Media Library**: Spatie Media Library
-- **Activity Log**: Spatie Activity Log
+**Webstore** dibangun untuk mengatasi kejenuhan belanja buku online yang lambat dan kaku. Platform ini menyederhanakan seluruh alur pembelian buku menjadi pengalaman yang menyenangkan bagi pembeli, sekaligus memberikan kontrol penuh bagi pemilik toko buku.
 
-## 📋 Prerequisites
+### 🌟 Bagi Pembaca & Pembeli Buku:
+- **Eksplorasi Buku Tanpa Batas**: Telusuri katalog buku dengan pencarian instan berdasarkan judul, penulis, genre, atau tag promosi kustom.
+- **Keranjang Belanja Reaktif**: Tambahkan, ubah jumlah, atau hapus buku pilihan Anda dari keranjang belanja secara langsung tanpa perlu menunggu halaman dimuat ulang (*zero-reload interface*).
+- **Pengiriman Cerdas Seluruh Indonesia**: Pilih tujuan provinsi dan kota Anda, lalu sistem akan secara otomatis menghitung ongkos kirim real-time dari berbagai kurir terpercaya (JNE, J&T, SiCepat, dll.).
+- **Alur Checkout yang Intuitif**: Pengisian formulir pesanan multi-langkah yang bersih, aman, dan mudah dipahami bahkan oleh pengguna awam.
+- **Notifikasi Pelacakan Real-Time**: Pembeli otomatis menerima email konfirmasi pesanan, info nomor resi pengiriman, hingga notifikasi saat buku telah sampai di tujuan.
 
-- PHP 8.2 or higher
-- Composer
-- Node.js & NPM
-- MySQL
+### 💼 Bagi Pemilik Toko & Admin (Back-Office):
+- **Dasbor Manajemen Terpusat**: Mengelola katalog buku, stok inventaris, kategori genre, dan halaman informasi statis dengan mudah melalui panel admin yang elegan.
+- **Pelacakan Status Pesanan Akurat**: Memantau siklus hidup pesanan penjualan secara aman, mulai dari pembayaran masuk, proses pengemasan, penginputan nomor resi, hingga pesanan selesai atau dibatalkan.
+- **Otomatisasi Mutasi Bank**: Konfirmasi pembayaran instan menggunakan integrasi sistem webhook Moota yang memverifikasi transaksi pelanggan tanpa perlu memeriksa mutasi secara manual.
 
-## 📦 Installation
+---
 
-### 1. Clone the repository
+## 💎 Fitur Unggulan Produk
+
+- **Visual Premium & Responsif**: Menggunakan prinsip desain modern dengan gradien halus, tipografi elegan dari Google Fonts, micro-animations, serta dukungan mode responsif penuh untuk ponsel dan tablet.
+- **Sistem Promosi Fleksibel**: Banner promosi dinamis (seperti *"Big Book Sale up to 50% off"*) yang langsung menarik perhatian pelanggan sejak pertama kali membuka situs.
+- **Keamanan Transaksi Tinggi**: URL konfirmasi pesanan yang unik dan terproteksi menggunakan ID yang di-samarkan (*obfuscated transaction ID*) demi privasi pembeli.
+
+---
+
+## 🚀 Cara Memulai (Instalasi Cepat)
+
+Ingin mencoba menjalankan Webstore di komputer lokal Anda? Ikuti langkah-langkah mudah berikut:
+
+### 1. Dapatkan Source Code & Instal Dependensi
 ```bash
-git clone <your-repository-url>
+# Clone repository ini
+git clone <url-repository-anda>
 cd webstore
-```
 
-### 2. Install PHP dependencies
-```bash
+# Instal paket PHP & aset Frontend
 composer install
-```
-
-### 3. Install NPM dependencies
-```bash
 npm install
 ```
 
-### 4. Environment Configuration
+### 2. Atur Environment (.env)
+Buat file konfigurasi `.env` dan generates kunci keamanan aplikasi:
 ```bash
 cp .env.example .env
 php artisan key:generate
 ```
+*Buka file `.env` dan sesuaikan pengaturan database Anda (`DB_DATABASE`, `DB_USERNAME`, `DB_PASSWORD`).*
 
-### 5. Configure your `.env` file
-```env
-APP_NAME="Your Store Name"
-APP_URL=http://localhost:8000
-
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=webstore
-DB_USERNAME=root
-DB_PASSWORD=
-
-QUEUE_CONNECTION=database
-
-MAIL_MAILER=smtp
-MAIL_HOST=smtp.mailtrap.io
-MAIL_PORT=2525
-MAIL_USERNAME=your_username
-MAIL_PASSWORD=your_password
-MAIL_ENCRYPTION=tls
-MAIL_FROM_ADDRESS=noreply@yourstore.com
-MAIL_FROM_NAME="${APP_NAME}"
-```
-
-### 6. Run migrations
+### 3. Migrasi & Pengisian Data Wilayah
+Jalankan migrasi database serta seeder untuk mengisi data awal wilayah pengiriman Indonesia:
 ```bash
-php artisan migrate
+php artisan migrate --seed
 ```
 
-### 7. Seed the database (optional)
+### 4. Jalankan Aplikasi dengan Satu Perintah! ⚡
+Proyek ini dilengkapi dengan perintah utilitas khusus untuk menjalankan seluruh ekosistem pengembangan secara bersamaan (Server Web, Pemroses Email Antrean, dan Penyusun Aset CSS/JS):
 ```bash
-php artisan db:seed
+composer dev
 ```
-
-### 8. Build frontend assets
-```bash
-npm run build
-# or for development with hot reload
-npm run dev
-```
-
-### 9. Start the development server
-```bash
-php artisan serve
-```
-
-### 10. Start the queue worker (in a separate terminal)
-```bash
-php artisan queue:work --tries=3
-# or for auto-reload during development
-php artisan queue:listen
-```
-
-## 🎯 Pages
-
-- **Homepage** - `/`
-- **Product Catalog** - `/products`
-- **Single Product** - `/product/{slug}`
-- **Shopping Cart** - `/cart`
-- **Checkout** - `/checkout`
-- **Order Confirmation** - `/order-confirmed/{trx_id}`
-- **Admin Panel** - `/admin`
-
-## � Email Templates
-
-All email templates are located in `resources/views/mail/orders/`:
-- `created.blade.php` - Order confirmation email
-- `progressed.blade.php` - Order in progress notification
-- `delivery.blade.php` - Shipping notification with tracking
-- `completed.blade.php` - Order completion notification
-- `cancelled.blade.php` - Order cancellation notification
-
-## 🔔 Events & Listeners
-
-### Events
-- `SalesOrderCreatedEvent` - Fired when a new order is created
-- `SalesOrderProgressedEvent` - Fired when order status changes to progress
-- `SalesOrderCompletedEvent` - Fired when order is completed
-- `SalesOrderCancelledEvent` - Fired when order is cancelled
-- `ShippingReceiptNumberUpdateEvent` - Fired when tracking number is added
-
-### Listeners
-- `SendOrderConfirmationEmailListener` - Sends order confirmation email (Queued)
-- `GeneratePaymentLinkListener` - Generates payment link for the order
-
-## 🔄 Order State Flow
-
-```
-Pending → Progress → Completed
-   ↓
-Cancel
-```
-
-### State Transitions
-- **Pending to Progress**: `PendingToProgress`
-- **Pending to Cancel**: `PendingToCancel`
-- **Progress to Completed**: `ProgressToCompleted`
-
-## 🚀 Usage
-
-### Customer Flow
-1. Browse products at `/products`
-2. View product details
-3. Add items to cart
-4. Proceed to checkout at `/checkout`
-5. Fill in customer information
-6. Select shipping method and destination
-7. Choose payment method
-8. Confirm order
-9. Receive order confirmation email
-10. Track order status
-
-### Admin Flow
-1. Access admin panel at `/admin`
-2. Manage products (create, edit, delete)
-3. View and manage orders
-4. Update order status
-5. Add tracking numbers
-6. Monitor inventory
-
-## 🧪 Testing Email Templates
-
-You can preview email templates by visiting:
-```
-/mailable
-```
-
-This route will show the latest order's email template.
-
-## 📝 Preline UI License
-
-This project uses components from Preline UI, which is licensed under:
-- MIT License
-- [Preline UI Fair Use License](https://preline.co/docs/license.html)
-
-We respect and follow the licensing terms of Preline UI, including proper attribution.
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## 📜 License
-
-This project is released under the MIT License. However, please note that the use of Preline UI in this project follows the Preline UI Fair Use License.
-
-## � Known Issues
-
-- Make sure to run queue worker for email notifications to work
-- Ensure `.env` file has correct mail configuration
-
-## 💡 Tips
-
-- Use `php artisan queue:work` in production
-- Use `php artisan queue:listen` during development for auto-reload
-- Check `storage/logs/laravel.log` for debugging
-- Use `php artisan queue:failed` to see failed jobs
-- Retry failed jobs with `php artisan queue:retry all`
-
-## 📞 Support
-
-For issues and questions, please open an issue in the repository.
+Buka **`http://127.0.0.1:8000`** di peramban Anda untuk mulai menjelajahi dunia buku Webstore!
 
 ---
 
-Made with ❤️ using Laravel & Preline UI
+<details>
+<summary>🛠️ <b>INFORMASI TEKNIS & DETIL FRAMEWORK (Khusus Developer)</b></summary>
 
+### Tech Stack Utama
+- **Backend Framework**: Laravel 12.x
+- **Frontend Engine**: Livewire 3.x, Alpine.js, Vanilla Calendar Pro
+- **Styling**: Tailwind CSS v4.0, Preline UI v3.x
+- **Real-time Server**: Laravel Reverb & Echo (WebSockets)
+- **Admin Panel**: Filament v3 (dengan Filament Shield untuk hak akses & Filament Breezy untuk profil)
+
+### Alur Siklus Status Pesanan (Sales Order State Machine)
+Status pesanan dikelola secara ketat menggunakan `spatie/laravel-model-states` untuk menghindari inkonsistensi data:
+```
+[Pending] ───(Pembayaran Masuk / Konfirmasi)───> [Progress] ───(Resi Diinput & Terkirim)───> [Completed]
+    │                                              │
+    └───(Pembatalan Transaksi / Kadaluwarsa)───────┴───(Kendala Pengiriman)───────────> [Cancel]
+```
+
+### Sistem Antrean & Notifikasi Event-Driven
+Mengirimkan email secara asinkron menggunakan antrean database (*queue*) saat terjadi perubahan status pesanan:
+1. **`SalesOrderCreatedEvent`** ➔ Mengirim email konfirmasi pesanan & membuat tautan pembayaran.
+2. **`SalesOrderProgressedEvent`** ➔ Mengirim email notifikasi bahwa buku sedang dikemas dan diproses.
+3. **`ShippingReceiptNumberUpdateEvent`** ➔ Mengirim email berisi nomor resi pengiriman asli untuk pelacakan pembeli.
+4. **`SalesOrderCompletedEvent`** ➔ Mengirim email penutup ucapan terima kasih atas selesainya transaksi.
+5. **`SalesOrderCancelledEvent`** ➔ Mengirim email pemberitahuan pembatalan pesanan beserta alasannya.
+
+### Rute Web Aktif
+- `/` - Beranda (HomePage)
+- `/products` - Katalog Produk (ProductCatalog)
+- `/product/{slug}` - Detail Buku (ProductController)
+- `/cart` - Keranjang Belanja (Cart)
+- `/checkout` - Formulir Pembelian (Checkout)
+- `/order-confirmed/{trx_id}` - Konfirmasi & Ringkasan Pesanan (SalesOrderDetail)
+- `/page/{slug}` - Halaman Informasi Statis (PageStatic)
+- `/admin` - Dasbor Admin Filament
+- `/moota/callback` - Webhook Otomatisasi Pembayaran Moota
+</details>
+
+---
+
+<div align="center">
+  Dibuat dengan ❤️ untuk para Pencinta Buku menggunakan Laravel, Livewire, & Preline UI
+</div>
