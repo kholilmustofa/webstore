@@ -9,13 +9,13 @@ Selamat datang di **Webstore**, sebuah platform e-commerce toko buku modern yang
 
 ---
 
-## 🖥️ Tampilan Webstore (Product Mockup)
+## 🖥️ Tampilan Webstore
 
-Berikut adalah visualisasi antarmuka dari platform **Webstore**:
+Berikut adalah antarmuka asli dari platform **Webstore**:
 
-![Webstore Laptop Mockup](public/images/webstore_mockup.png)
+![Webstore Screenshot](public/images/webstore_screenshot.png)
 
-*Antarmuka modern dengan banner interaktif **Big Book Sale**, navigasi yang responsif, katalog produk yang rapi, serta transisi animasi yang halus.*
+*Antarmuka beranda Webstore dengan banner promosi interaktif **Big Book Sale** dan jajaran **Feature Product** yang menarik.*
 
 ---
 
@@ -123,6 +123,4 @@ Mengirimkan email secara asinkron menggunakan antrean database (*queue*) saat te
 
 ---
 
-<div align="center">
-  Dibuat dengan ❤️ untuk para Pencinta Buku menggunakan Laravel, Livewire, & Preline UI
-</div>
+
